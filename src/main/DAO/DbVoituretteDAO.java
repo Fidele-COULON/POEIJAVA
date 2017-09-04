@@ -1,6 +1,6 @@
-package DAO;
+package main.DAO;
 
-import POJO.Voiturette;
+import main.POJO.Voiturette;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

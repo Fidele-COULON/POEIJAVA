@@ -1,10 +1,10 @@
-package POJO;
+package main.POJO;
 
-import ExceptionsMetiers.DimensionException;
+import main.ExceptionsMetiers.DimensionException;
 
 /**
  * <b>Classe heritee de vehicules</b><br>
- * Ajoute les attributs hauteur et largeur (exprimees en cm et doivent être positives)
+ * Ajoute les attributs hauteur et largeur (exprimees en cm et doivent ï¿½tre positives)
  * @author Fidele et Jeremy 
  * @version 1.0
  **/
@@ -37,7 +37,7 @@ public class Utilitaire extends Vehicule {
      * @throws DimensionException levee si pas positive
      */
     public void setHauteur(int hauteur) throws DimensionException {
-        if (hauteur <=0 ) throw new DimensionException("La hauteur doit être positive");
+        if (hauteur <=0 ) throw new DimensionException("La hauteur doit ï¿½tre positive");
         this.hauteur = hauteur;
     }
 
@@ -50,7 +50,7 @@ public class Utilitaire extends Vehicule {
      * @throws DimensionException levee si pas positive
      */
     public void setLargeur(int largeur) throws DimensionException {
-        if (largeur <=0 ) throw new DimensionException("La largeur doit être positive");
+        if (largeur <=0 ) throw new DimensionException("La largeur doit ï¿½tre positive");
         this.largeur = largeur;
     }
 

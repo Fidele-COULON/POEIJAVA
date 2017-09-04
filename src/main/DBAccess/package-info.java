@@ -3,4 +3,4 @@
  * @author Fidele et Jeremy 
  * @version 2.0
  **/
-package DBAccess;
+package main.DBAccess;

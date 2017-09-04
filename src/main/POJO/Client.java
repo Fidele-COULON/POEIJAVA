@@ -1,5 +1,5 @@
-package POJO;
-import ExceptionsMetiers.AgeException;
+package main.POJO;
+import main.ExceptionsMetiers.AgeException;
 /**
  * <b>Classe definissant un client</b><br>
  * definit les attributs age et permis (en plus de ceux de Personne)
@@ -33,7 +33,7 @@ public class Client extends Personne {
  * @throws AgeException levee si pas majeur
  */
     public void setAge(int age) throws AgeException {
-    	if (age < 18) throw new AgeException ("Il faut etre majeur pour louer une véhicule");
+    	if (age < 18) throw new AgeException ("Il faut etre majeur pour louer une vï¿½hicule");
         this.age = age;
     }
 

@@ -1,4 +1,4 @@
-package POJO;
+package main.POJO;
 /**
  * <b>Classe heritee de vehicule sans aucune modification</b><br>
  * @author Fidele et Jeremy 

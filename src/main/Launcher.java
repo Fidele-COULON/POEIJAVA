@@ -1,7 +1,11 @@
-import DAO.*;
-import POJO.*;
+package main;
+
+import main.DAO.*;
+import main.POJO.*;
 
 import java.util.Scanner;
+
+import main.DAO.DAOMySqlFactory;
 
 import java.util.Date;
 import java.sql.SQLException;
@@ -9,7 +13,7 @@ import java.text.SimpleDateFormat;
 
 /**
  * <b>Classe lancant l'application</b><br>
- * Saisie en mode ligne de commande très "Old School"<br>
+ * Saisie en mode ligne de commande trï¿½s "Old School"<br>
  * La gestion des clients a ete fortement securisee par les controles idoines<br>
  * La gestion des autres objets est peu controlee<br>
  * La gestion de locations de voitures est en cours de finalisation<br>
@@ -37,11 +41,15 @@ public class Launcher {
     	try {
     		DAOMySqlFactory.initFactory();
     		
-    		 
+    		linkDBclient = DAOMySqlFactory.getDAOClient();
+            linkDBcommercial = DAOMySqlFactory.getDAOCommercial();
+            linkDBvoiture = DAOMySqlFactory.getDAOVoiture();
+            linkDBvoiturette =DAOMySqlFactory.getDAOVoiturette();
+            linkDButilitaire = DAOMySqlFactory.getDAOUtilitaire();
+            linkDBlocationVoitures = DAOMySqlFactory.getDAOLocationVoiture();
     	
-    	
-	    	System.out.println("=============================================");
-	        System.out.println("= Gestion de parc locatif de vehicules v7.0 =");
+    		    	System.out.println("=============================================");
+	        System.out.println("= Gestion de parc locatif de vehicules v7.1 =");
 	        System.out.println("=============================================");
             int choixMenuPrincipal, choixMenuSecondaire = -1;
            
@@ -60,22 +68,22 @@ public class Launcher {
                 }
             } while(choixMenuPrincipal !=99); // 99 est la sortie par convention
             
-            DAOMySqlFactory.closeFactory(); // libère aussi la cnx à la BD
+            DAOMySqlFactory.closeFactory(); // libï¿½re aussi la cnx ï¿½ la BD
      
     	} catch (SQLException se) {
-    		System.out.println("Erreur de connexion à la base de données  : " + se.getMessage());  	
+    		System.out.println("Erreur de connexion ï¿½ la base de donnï¿½es  : " + se.getMessage());  	
     	}
     	
-        System.out.println("Le programme s'est arrêté ...");
+        System.out.println("Le programme s'est arrï¿½tï¿½ ...");
     }
 
     private static final String[] LISTEMENUPRINCIPAL  = {
-    		"Gestion des clients (complet et sécurisé)",
+    		"Gestion des clients (complet et sï¿½curisï¿½)",
     		"Gestion des commerciaux (complet)",
     		"Gestion des voitures (complet)",
     		"Gestion des voiturettes (vide)",
     		"Gestion des utilitaires (vide)",
-    		"Gestion des locations de voitures (complet et sécurisé)"
+    		"Gestion des locations de voitures (complet et sï¿½curisï¿½)"
     };
     		
     private static void afficherMenuPrincipal() {
@@ -124,7 +132,7 @@ public class Launcher {
             case 11: {
             	try{
 	            	System.out.println("=================================");
-	           	 	System.out.println("Création non sécurisé d'un client");
+	           	 	System.out.println("Crï¿½ation non sï¿½curisï¿½ d'un client");
 	           	 	System.out.println("=================================");
 	           	
 	                System.out.println("nom :");
@@ -146,7 +154,7 @@ public class Launcher {
 
             case 12: {
             	System.out.println("=================================");
-           	 	System.out.println("Suppression sécurisée d'un client");
+           	 	System.out.println("Suppression sï¿½curisï¿½e d'un client");
            	 	System.out.println("=================================");   
           
            	 	int id = getClientIDValide("Quel id client voulez vous supprimer ?", true);
@@ -163,7 +171,7 @@ public class Launcher {
 
             case 13: {
             	System.out.println("==================================");
-           	 	System.out.println("Modification sécurisée d'un client");
+           	 	System.out.println("Modification sï¿½curisï¿½e d'un client");
            	 	System.out.println("==================================");
            	
            	 	try{
@@ -199,7 +207,7 @@ public class Launcher {
       
             case 15: {
             	System.out.println("==============================");
-            	System.out.println("Affichage sécurisé d'un client");
+            	System.out.println("Affichage sï¿½curisï¿½ d'un client");
            	 	System.out.println("==============================");   
           
            	 	int id = getClientIDValide("Quel id client voulez vous afficher ?", false);
@@ -421,7 +429,7 @@ public class Launcher {
 
             case 61: {
             	System.out.println("===========================================");
-            	System.out.println("Saisie sécurisée d'une location de voitures");
+            	System.out.println("Saisie sï¿½curisï¿½e d'une location de voitures");
             	System.out.println("===========================================");
             	
             	Voiture v= null;
@@ -434,7 +442,7 @@ public class Launcher {
 	                    System.out.println(linkDBvoiture.find());
 	                    id_voiture = clavier.nextInt();clavier.nextLine();
 	                    v = linkDBvoiture.find(id_voiture);
-	                    if (v == null) System.out.println("La voiture " + id_voiture + " n'a pas été trouvée !!!");
+	                    if (v == null) System.out.println("La voiture " + id_voiture + " n'a pas ï¿½tï¿½ trouvï¿½e !!!");
             		} catch (Exception e) {
             			clavier.nextLine();
             		}
@@ -447,7 +455,7 @@ public class Launcher {
 	                	System.out.println(linkDBclient.find());
 	                	id_client = clavier.nextInt();clavier.nextLine();
 	                	c =  linkDBclient.find(id_client);
-	                	if (c == null) System.out.println("Le client " + id_client + " n'a pas été trouvé !!!");
+	                	if (c == null) System.out.println("Le client " + id_client + " n'a pas ï¿½tï¿½ trouvï¿½ !!!");
                 	} catch (Exception e) {
                 		clavier.nextLine();
             		}
@@ -456,11 +464,11 @@ public class Launcher {
                 Commercial co = null ;
                 do { // Saisie ID Commercial
                 	try {
-                		System.out.println("Quel id Commercial vous gère ?");
+                		System.out.println("Quel id Commercial vous gï¿½re ?");
                 		System.out.println(linkDBcommercial.find());
                         id_commercial = clavier.nextInt();clavier.nextLine();
                         co = linkDBcommercial.find(id_commercial);
-                        if (co == null) System.out.println("Le commercial " + id_commercial + " n'a pas été trouvé !!!");
+                        if (co == null) System.out.println("Le commercial " + id_commercial + " n'a pas ï¿½tï¿½ trouvï¿½ !!!");
                 	}catch (Exception e) {
                 		clavier.nextLine();
             		}
@@ -484,7 +492,7 @@ public class Launcher {
 
             case 62: {
             	System.out.println("====================================");
-           	 	System.out.println("Suppression sécurisée d'une location");
+           	 	System.out.println("Suppression sï¿½curisï¿½e d'une location");
            	 	System.out.println("====================================");   
           
            	 	Location loc = getLocationVoituresIDValide("Quel id location voulez vous supprimer ?", true);
@@ -499,13 +507,13 @@ public class Launcher {
                 break;
             }
 
-            case 63: {System.out.println("Une location ne peut pas être modifiée."); break; }
+            case 63: {System.out.println("Une location ne peut pas ï¿½tre modifiï¿½e."); break; }
             
             case 64: {afficherListeLocationsVoitures(); break; }
             
             case 65: {
             	System.out.println("============================================");
-            	System.out.println("Affichage sécurisé d'une location de voiture");
+            	System.out.println("Affichage sï¿½curisï¿½ d'une location de voiture");
            	 	System.out.println("============================================");   
           
            	 	Location loc = getLocationVoituresIDValide("Quel id de location voulez vous afficher ?", false);
@@ -526,7 +534,7 @@ public class Launcher {
     	 System.out.println("Liste des clients enregistres");
     	 System.out.println("=============================");
     	 for (Client c:linkDBclient.find()) {
-    		 System.out.println("Le client N°" + c.getId() + " s'appelle " + c.getPrenom() + " " + c.getNom()+ " et a le permis: " + c.getPermis() + " et est agé de : " + c.getAge());
+    		 System.out.println("Le client Nï¿½" + c.getId() + " s'appelle " + c.getPrenom() + " " + c.getNom()+ " et a le permis: " + c.getPermis() + " et est agï¿½ de : " + c.getAge());
     	 }
      }
      
@@ -534,7 +542,7 @@ public class Launcher {
     	 Client c= linkDBclient.find(l.getId_client());
 	     Commercial co= linkDBcommercial.find(l.getId_commercial());
 	 	 Voiture v= linkDBvoiture.find(l.getId_vehicule());
-	 	 System.out.println("Location n° " + l.getId() + " : " + c.getPrenom() + " " + c.getNom() + " a loué une " + v.getModele() + " géré par " + co.getNom() + " en date de " + l.getDateLocation());
+	 	 System.out.println("Location nï¿½ " + l.getId() + " : " + c.getPrenom() + " " + c.getNom() + " a louï¿½ une " + v.getModele() + " gï¿½rï¿½ par " + co.getNom() + " en date de " + l.getDateLocation());
      }
      
      private static void afficherListeLocationsVoitures(){
@@ -544,23 +552,23 @@ public class Launcher {
     	 for (Location l :linkDBlocationVoitures.find()) {
     		Client c= linkDBclient.find(l.getId_client());
     		if (c == null) {
-    			System.out.println("Location n° " + l.getId() + " ---- Erreur : Le client " + l.getId_client() + " n'a pas été trouvé !!!");
+    			System.out.println("Location nï¿½ " + l.getId() + " ---- Erreur : Le client " + l.getId_client() + " n'a pas ï¿½tï¿½ trouvï¿½ !!!");
     			continue;
     		}
     		
     		Commercial co= linkDBcommercial.find(l.getId_commercial());
 		    if (co == null) {
-		    	System.out.println("Location n° " + l.getId() + " ---- Erreur : Le commercial " + l.getId_commercial() + " n'a pas été trouvé !!!");
+		    	System.out.println("Location nï¿½ " + l.getId() + " ---- Erreur : Le commercial " + l.getId_commercial() + " n'a pas ï¿½tï¿½ trouvï¿½ !!!");
 		    	continue;
 		    }
 		    
     		Voiture v= linkDBvoiture.find(l.getId_vehicule());
     		if (v == null) {
-    			System.out.println("Location n° " + l.getId() + " ---- Erreur : La voiture " + l.getId_vehicule() + " n'a pas été trouvée !!!");
+    			System.out.println("Location nï¿½ " + l.getId() + " ---- Erreur : La voiture " + l.getId_vehicule() + " n'a pas ï¿½tï¿½ trouvï¿½e !!!");
     			continue;
     		}		
 		    	
-		    System.out.println("Location n° " + l.getId() + " : " + c.getPrenom() + " " + c.getNom() + " a loué une " + v.getModele() + " géré par " + co.getNom()  + " en date de " + l.getDateLocation());
+		    System.out.println("Location nï¿½ " + l.getId() + " : " + c.getPrenom() + " " + c.getNom() + " a louï¿½ une " + v.getModele() + " gï¿½rï¿½ par " + co.getNom()  + " en date de " + l.getDateLocation());
     	 }
      }
      /**
@@ -580,7 +588,7 @@ public class Launcher {
        	 		id = clavier.nextInt();clavier.nextLine();
                 c = linkDBclient.find(id);
                 if (c == null) {
-                	System.out.println("Le client N°" + id + " n'a pas été trouvé !!!");
+                	System.out.println("Le client Nï¿½" + id + " n'a pas ï¿½tï¿½ trouvï¿½ !!!");
                 	nbTentatives ++;
                 }
        	 	} while (c== null && nbTentatives <= 4 );
@@ -604,7 +612,7 @@ public class Launcher {
     	 		id = clavier.nextInt();clavier.nextLine();
     	 		loc = linkDBlocationVoitures.find(id);
     	 		if (loc == null) {
-    	 			System.out.println("La location de voitures N° " + id + " n'a pas été trouvée !!!");
+    	 			System.out.println("La location de voitures Nï¿½ " + id + " n'a pas ï¿½tï¿½ trouvï¿½e !!!");
     	 			nbTentatives ++;
     	 		}
     	 		} while (loc == null && nbTentatives <= 4 );

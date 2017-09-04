@@ -1,4 +1,4 @@
-package DAO;
+package main.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * <b>Classe abstraite generique implementant les objets DAO</b><br>
  * Est une methode abstraite plutot qu'une interface pour imposer un constructeur<br>
- * Le constructeur propage une <b>exception SQL</b> si la connexion à la table ne peut se faire.<br>
+ * Le constructeur propage une <b>exception SQL</b> si la connexion ï¿½ la table ne peut se faire.<br>
  * Impose la redefinition des methodes creer, modifier et find.<br>
  * Implemente la methode supprimer pour un objet dans la table.<br>
  * find() sans parametre renvoie la liste de tous les objets<br>
@@ -28,7 +28,7 @@ public abstract class DAOMother<T> {
      * <b>Constructeur</b><br>
      * @param cnx Connection a la base de donnees
      * @param table Table utilisee dans la base de donnees
-     * @throws <b>SQLException</b> si un probleme de cnx à la table existe (déclenché par un select * from table)
+     * @throws <b>SQLException</b> si un probleme de cnx ï¿½ la table existe (dï¿½clenchï¿½ par un select * from table)
      */
     public DAOMother(Connection cnx, String table) throws SQLException {
         this.cnx = cnx;
@@ -36,7 +36,7 @@ public abstract class DAOMother<T> {
         
         QUERY_DELETE = "DELETE FROM "+ table + " WHERE id =?"; // Initialisation de la pseudo-constante avec la table
         
-        // Test de connexion à la BD
+        // Test de connexion ï¿½ la BD
         PreparedStatement pstate = cnx.prepareStatement(QUERY_FIND_HEADER + table);
         pstate.executeQuery();        
     }

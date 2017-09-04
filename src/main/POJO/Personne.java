@@ -1,4 +1,4 @@
-package POJO;
+package main.POJO;
 /**
  * <b>Classe mere des objets de type clients et commerciaux</b><br>
  * definit les attributs nom et prenom

@@ -1,4 +1,4 @@
-package POJO;
+package main.POJO;
 /**
  * <b>Classe abstraite Mere de tous les objets metiers stockes dans la BDD</b><br>
  * possede un seul attribut ID

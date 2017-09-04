@@ -1,4 +1,4 @@
-package POJO;
+package main.POJO;
 
 /**
  * <b>Classe implementant une location de vehicules</b><br>

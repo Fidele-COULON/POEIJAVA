@@ -1,6 +1,6 @@
-package DAO;
+package main.DAO;
 
-import POJO.Location;
+import main.POJO.Location;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

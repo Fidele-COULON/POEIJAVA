@@ -1,4 +1,4 @@
-package POJO;
+package main.POJO;
 /**
  * <b>Classe definissant un commercial</b><br>
  * definit l'attribut matricule (en plus de ceux de Personne)

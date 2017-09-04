@@ -1,4 +1,4 @@
-package DBAccess;
+package main.DBAccess;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -22,12 +22,12 @@ public class ConnexionDB {
 
             myConnexion = DriverManager.getConnection(url, user, password);
 
-            System.out.println("Connexion effectuée à la base de données " + url); 
+            System.out.println("Connexion effectuÃ©e Ã  la base de donnÃ©es " + url); 
     }
 
     public static Connection getInstance() throws SQLException{
         if (myConnexion == null){
-            System.out.println("Création de la connexion");
+            System.out.println("CrÃ©ation de la connexion v2.0");
             new ConnexionDB();
         } else {
             System.out.println("Utilisation de la connexion");
@@ -39,7 +39,7 @@ public class ConnexionDB {
        try {
           if (myConnexion!= null ) myConnexion.close();
        } catch (SQLException se){
-           System.out.println("Erreur SQL de déconnexion à la base :  " + se.getMessage());
+           System.out.println("Erreur SQL de dï¿½connexion ï¿½ la base :  " + se.getMessage());
        }
     }
 }

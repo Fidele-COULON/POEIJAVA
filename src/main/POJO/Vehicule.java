@@ -1,4 +1,4 @@
-package POJO;
+package main.POJO;
 /**
  * <b>Classe abstraite Mere de tous les objets vehicule stockes dans la BDD</b><br>
  * possede les attributs couleur, modele et immatriculation<br>

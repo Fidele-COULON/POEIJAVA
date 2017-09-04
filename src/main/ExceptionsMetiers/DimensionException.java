@@ -1,4 +1,4 @@
-package ExceptionsMetiers;
+package main.ExceptionsMetiers;
 
 public class DimensionException extends Exception{	
 	private static final long serialVersionUID = 1L;

@@ -1,17 +1,17 @@
-package DAO;
+package main.DAO;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import DBAccess.ConnexionDB;
+import main.DBAccess.ConnexionDB;
 
-import POJO.*;
+import main.POJO.*;
 /**
  * <b>Classe fournissant des objets DAO (fabrique de DAO)</b><br>
  * Ne contient que des methodes statiques<br>
- * Il faut impérativement appeller <b>initFactory</b> avant d'utiliser la Fabrique<br>
- * Il faut impérativement appeller <b>closeFactory</b> pour fermer proprement la Fabrique<br>
- * La fabrique propage les <b>exceptions SQL</b> lors de la création des objets<br>
+ * Il faut impï¿½rativement appeller <b>initFactory</b> avant d'utiliser la Fabrique<br>
+ * Il faut impï¿½rativement appeller <b>closeFactory</b> pour fermer proprement la Fabrique<br>
+ * La fabrique propage les <b>exceptions SQL</b> lors de la crï¿½ation des objets<br>
  * @author Fidele et Jeremy 
  * @version 2.0
  **/

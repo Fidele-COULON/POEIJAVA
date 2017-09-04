@@ -1,6 +1,6 @@
-package DAO;
+package main.DAO;
 
-import POJO.Commercial;
+import main.POJO.Commercial;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

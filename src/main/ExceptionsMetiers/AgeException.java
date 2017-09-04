@@ -1,4 +1,4 @@
-package ExceptionsMetiers;
+package main.ExceptionsMetiers;
 /**
  * <b>Exception metier declenchee quand l'age < 18 ans</b><br>
  * @author Fidele et Jeremy 

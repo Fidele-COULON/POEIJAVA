@@ -1,6 +1,6 @@
-package DAO;
+package main.DAO;
 
-import POJO.Voiture;
+import main.POJO.Voiture;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
