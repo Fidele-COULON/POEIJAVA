@@ -19,7 +19,13 @@ public class ConnexionDB {
             String url = "jdbc:mysql://localhost:3306/gestionlocationvehicules";
             String user = "glv";
             String password = "Password";
-
+            
+            try {
+				Class.forName("com.mysql.jdbc.Driver"); // nécessaire avec Maven
+			} catch (ClassNotFoundException e) {
+				throw new SQLException(e.getMessage());
+			}
+            
             myConnexion = DriverManager.getConnection(url, user, password);
 
             System.out.println("Connexion effectuée à la base de données " + url); 
